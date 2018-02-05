@@ -1,0 +1,9 @@
+galaxy_info:
+  author: Jakub Jarosz
+  description: Role for configuring prometheus node exporter firewalld service
+  min_ansible_version: 2.3
+  platforms:
+  - name: RedHat
+    versions:
+    - 7.3
+    - 7.4

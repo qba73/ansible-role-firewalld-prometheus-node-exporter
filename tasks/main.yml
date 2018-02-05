@@ -1,0 +1,25 @@
+---
+- name: make sure firewalld is installed
+  yum: name=firewalld state=present
+
+- name: make sure firewalld is running
+  systemd: name=firewalld state=started
+
+- name: add prometheus node exporter service config to the firewalld
+  template:
+    src: prometheus-node-exporter.xml.j2
+    dest: /etc/firewalld/services/prometheus-node-exporter.xml
+    owner: root
+    group: root
+    mode: "0644"
+
+- name: restart firewalld
+  systemd: name=firewalld state=restarted
+
+- name: add service prometheus-node-exporter to firewalld
+  firewalld:
+    service: prometheus-node-exporter
+    state: enabled
+    permanent: true
+    immediate: yes
+

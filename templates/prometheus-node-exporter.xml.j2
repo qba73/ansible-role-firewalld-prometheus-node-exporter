@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<service>
+  <short>prometheus-node-exporter</short>
+  <description>Prometheus Node Exporter rule to open ports in the firewalld.</description>
+  <port protocol="tcp" port="{{ prom_node_exporter_port }}"/>
+</service>
